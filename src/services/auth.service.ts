@@ -40,12 +40,8 @@ export class AuthService {
 
     logout() {
   
-        this.storage.getLocalUser(newFunction());
+        this.storage.getLocalUser();
 
     }
 
-}
-
-function newFunction(): any {
-    return null;
 }
