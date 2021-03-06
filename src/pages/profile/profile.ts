@@ -13,6 +13,7 @@ import { StorageService } from '../../services/storage.service';
 export class ProfilePage {
 
   cliente: ClienteDTO;
+  profileImage;
 
   constructor(
     public navCtrl: NavController,
@@ -37,9 +38,11 @@ export class ProfilePage {
   getImageIfExists() {
 
     this.clienteService.getImageFromBucket(this.cliente.id).subscribe(response => {
-      this.cliente.imgUrl = `${API_CONFIG.bucketBaseUrl}/cp${this.cliente.id}.jpg`;
+      this.profileImage = `${API_CONFIG.bucketBaseUrl}/cp${this.cliente.id}.jpg`;
     },
-    error => {});
+    error => {
+      this.profileImage = 'assets/imgs/avatar-blank.png';
+    });
 
   }
 
